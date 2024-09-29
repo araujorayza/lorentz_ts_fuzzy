@@ -1,17 +1,21 @@
-function dx=lorentz_nonlinear(t,x,param)
+function dstate=lorentz_nonlinear(t,state,param)
 %     Lorentz system
 %     du = -sigma*u+sigma*v
 %     dv = -v - u*w + r*u
 %     dw = -b*w + u*v
-    sigma=param(1);
-    r=parm(2);
-    b=param(3);
+%     using the change of variables: x=u, v=y, z=w-5/4*r
 
-    u = x(1);
-    v = x(2);
-    w = x(3);
+    sigma = param(1);
+    r = param(2);
+    b = param(3);
 
-    dx = [-sigma*u+sigma*v;
-          -v - u*w + r*u;
-          -b*w + u*v];
+    x = state(1);
+    y = state(2);
+    z = state(3);
+
+    dx = -sigma*x + sigma*y;
+    dy = -y -x*(z + 5/4*r) + r*x;
+    dz = -b*(z + 5/4*r) + x*y;
+
+    dstate = [dx;dy;dz];             
 end
