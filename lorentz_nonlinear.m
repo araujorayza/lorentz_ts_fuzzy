@@ -9,13 +9,13 @@ function dstate=lorentz_nonlinear(t,state,param)
     r = param(2);
     b = param(3);
 
-    x = state(1);
-    y = state(2);
-    z = state(3);
+    u = state(1);
+    v = state(2);
+    w = state(3);
 
-    dx = -sigma*x + sigma*y;
-    dy = -y -x*(z + 5/4*r) + r*x;
-    dz = -b*(z + 5/4*r) + x*y;
+    du = -sigma*u + sigma*v;
+    dv = -v -u*w + r*u;
+    dw = -b*w + u*v;
 
-    dstate = [dx;dy;dz];             
+    dstate = [du;dv;dw];             
 end
