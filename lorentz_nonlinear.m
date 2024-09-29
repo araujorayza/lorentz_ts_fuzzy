@@ -3,7 +3,7 @@ function dstate=lorentz_nonlinear(t,state,param)
 %     du = -sigma*u+sigma*v
 %     dv = -v - u*w + r*u
 %     dw = -b*w + u*v
-%     using the change of variables: x=u, v=y, z=w-5/4*r
+
 
     sigma = param(1);
     r = param(2);
