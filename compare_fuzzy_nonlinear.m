@@ -20,7 +20,7 @@ sol_nl = ode45(@(t,y_var) lorentz_nonlinear(t,y_var,param),t,InitSTATE,options);
 sol_ts = ode45(@(t,y_var) lorentz_TSFuzzy(t,y_var,param),t,InitSTATE,options);
 
 %calculo a solução nos pontos exatos que quero
-t=linspace(0,100,250);
+t=linspace(t(1),t(end),250);
 STATE_NL=deval(sol_nl,t);
 STATE_TS=deval(sol_ts,t);
 
