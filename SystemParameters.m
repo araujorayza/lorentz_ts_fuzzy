@@ -41,7 +41,11 @@ h{4} = @(u,v) (60+u)/120*(60-v)/140;
 
 %% duffing oscilation
 clear all 
+clc;
 d=50;
+ulim=[-d,d];
+vlim=[-d,d];
+
 
 A{1}=[0 1;
     0 -0.1];
@@ -50,3 +54,26 @@ A{2}=[0 1;
 
 h{1} = @(u) 1-u^2/d^2;
 h{2} = @(u) 1-h{1}(u);
+%% rossler equation
+clear all 
+clc;
+a=0.34;
+b=0.4;
+c=-20;
+d=10;
+
+ulim=[c-d,c+d];
+vlim=ulim;
+wlim=ulim;
+
+A{1}=[0 -1 -1;
+      1 a 0;
+      b 0 -d];
+
+A{2}=[0 -1 -1;
+      1 a 0;
+      b 0 d];
+
+h{1} = @(u) 1/2*(1+(c-u)/d);
+h{2} = @(u) 1-h{1}(u);
+
