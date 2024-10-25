@@ -37,3 +37,4 @@ nl = 1; %number of nonlinearities
 
 %Theorem
 [P,L,R]=journal_result(A,G,Rset,n,lambda,l,phi,nl)
+P=cnmac2023(A,G,Rset,n)

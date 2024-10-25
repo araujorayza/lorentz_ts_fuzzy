@@ -5,12 +5,18 @@ for j=G
     R{j} = sdpvar(n,n,'full');
     L{j} = sdpvar(n,n,'full');
 end
+b=sqrt(90^2+90^2);
+b1= 1;
 
 for j=Rset
     for k=G
-        Upsilon{k,j} = [L{k}*A{j}+A{j}'*L{k}'+lambda*P{k},   (P{k}-L{k}'+R{k}*A{j})',   zeros(n,1);
-            P{k}-L{k}'+R{k}*A{j},           -R{k}-R{k}',             zeros(n,1);
-            zeros(1,n),                  zeros(1,n),              -lambda*l];
+%         Upsilon{k,j} = [L{k}*A{j}+A{j}'*L{k}'+lambda*P{k},   (P{k}-L{k}'+R{k}*A{j})',   zeros(n,1);
+%             P{k}-L{k}'+R{k}*A{j},           -R{k}-R{k}',             zeros(n,1);
+%             zeros(1,n),                  zeros(1,n),              -lambda*l];
+        Upsilon{k,j} = [L{k}*A{j}+A{j}'*L{k}'+lambda*P{k}-lambda*l*eye(n)/(b1*b^2),   (P{k}-L{k}'+R{k}*A{j})';
+                            P{k}-L{k}'+R{k}*A{j},           -R{k}-R{k}];
+                            
+
     end
 end
 
