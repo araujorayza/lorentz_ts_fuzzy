@@ -52,26 +52,4 @@ h{2} = @(x) 1-h{1}(x);
 % hold on
 % plot3(STATE_TS(1,:),STATE_TS(2,:),STATE_TS(3,:))
 
-%% Project
-
-G=[1];
-lambda=10;
-l=0.1;
-% phi(m,y,k,j)
-phi(1,1,1,1)=0.5;
-phi(1,2,1,1)=0.5;
-phi(1,3,1,1)=1;
-phi(2,1,1,1)=0.5;
-phi(2,2,1,1)=0.5;
-phi(2,3,1,1)=0.5;
-phi(3,1,1,1)=0.5;
-phi(3,2,1,1)=0.5;
-phi(3,3,1,1)=0.5;
-
-% definitions
-Rset = 1:length(A); %number of rules
-n = size(A{1},2); %system order
-nl = 1; %number of nonlinearities
-
-%Theorem
-[P,L,R]=journal_result(A,G,Rset,n,lambda,l,phi,nl)
+%%
