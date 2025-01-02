@@ -7,7 +7,7 @@ SystemParameters;
 
 %Project parameters
 G=[1];
-lambda=1;
+lambda=10;
 l=0.1;
 % phi(m,y,k,j)
 phi(1,1,1,1)=10;
@@ -37,4 +37,5 @@ nl = 1; %number of nonlinearities
 
 %Theorem
 [P,L,R]=journal_result(A,G,Rset,n,lambda,l,phi,nl)
-P=cnmac2023(A,G,Rset,n)
+
+%P=cnmac2023(A,G,Rset,n)

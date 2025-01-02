@@ -1,8 +1,8 @@
 param=[10.5; 29.4; 2.8]; %[sigma,r,b]
 
 ulim=[-60,60];
-vlim=[-80,60];
-wlim=[-60+5/4*param(2),80+5/4*param(2)];
+vlim=[-80,80]; %[-80,60]
+wlim=[-120,120];%[-60\+5/4*param(2),80+5/4*param(2)];
 % using the change of variables: x=u, v=y, z=w-5/4*r
 
 sigma = param(1);

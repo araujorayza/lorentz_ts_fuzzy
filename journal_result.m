@@ -5,18 +5,13 @@ for j=G
     R{j} = sdpvar(n,n,'full');
     L{j} = sdpvar(n,n,'full');
 end
-b=sqrt(90^2+90^2);
-b1= 1;
+max_norm_squared=60^2+80^2+120^2;
+
 
 for j=Rset
     for k=G
-%         Upsilon{k,j} = [L{k}*A{j}+A{j}'*L{k}'+lambda*P{k},   (P{k}-L{k}'+R{k}*A{j})',   zeros(n,1);
-%             P{k}-L{k}'+R{k}*A{j},           -R{k}-R{k}',             zeros(n,1);
-%             zeros(1,n),                  zeros(1,n),              -lambda*l];
-        Upsilon{k,j} = [L{k}*A{j}+A{j}'*L{k}'+lambda*P{k}-lambda*l*eye(n)/(b1*b^2),   (P{k}-L{k}'+R{k}*A{j})';
+        Upsilon{k,j} = [L{k}*A{j}+A{j}'*L{k}'+lambda*P{k}-lambda*l*eye(n)/max_norm_squared,   (P{k}-L{k}'+R{k}*A{j})';
                             P{k}-L{k}'+R{k}*A{j},           -R{k}-R{k}];
-                            
-
     end
 end
 
@@ -66,6 +61,15 @@ for k=G
         LMIS = [LMIS,lmi1<=0,lmi2<=0];
     end
 end
+
+% for k=G
+%     for i=1:n
+%         e_nu = zeros(n,1);
+%         e_nu(i)=1;
+%         LMIS=[LMIS,P{k}-e_nu*e_nu'/max_norm_squared];
+%     end
+% end
+
 
 opts=sdpsettings;
 opts.solver='sedumi';
