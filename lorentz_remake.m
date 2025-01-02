@@ -14,7 +14,6 @@ r = param(2);
 b = param(3);
 
 %% Plot 
-
 %Simulation Parameters
 InitSTATE=[20;-20;-10];
 t=[0 100];
@@ -34,3 +33,23 @@ plot3(STATE_NL(1,:),STATE_NL(2,:),STATE_NL(3,:))
 xlim(xbounds)
 ylim(ybounds)
 zlim(zbounds)
+
+%% TS FUZZY SYSTEM
+
+A{1}=[-sigma sigma 0;
+        r -1 -xbounds(2);
+        0 xbounds(2) -b];
+A{2}=[-sigma sigma 0;
+        r -1 -xbounds(1);
+        0 xbounds(1) -b];
+
+h{1} = @(x) (x - xbounds(1))/(xbounds(2)-xbounds(1));
+h{2} = @(x) 1-h{1}(x);
+
+% sol_ts = ode45(@(t,y_var) lorentz_TSFuzzy(t,y_var,param),t,InitSTATE,options);
+% STATE_TS=deval(sol_ts,t);
+% 
+% hold on
+% plot3(STATE_TS(1,:),STATE_TS(2,:),STATE_TS(3,:))
+
+%%
