@@ -66,7 +66,7 @@ end
 %     for i=1:n
 %         e_nu = zeros(n,1);
 %         e_nu(i)=1;
-%         LMIS=[LMIS,P{k}-e_nu*e_nu'/max_norm_squared];
+%         LMIS=[LMIS,P{k}-e_nu*e_nu'/max_norm_squared>=0];
 %     end
 % end
 
